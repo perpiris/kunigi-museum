@@ -2,8 +2,18 @@
 
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
-        <Nullable>enable</Nullable>
+        <Nullable>disable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>04800971-bc2e-4a66-9dca-a35980d186d9</UserSecretsId>
     </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.2" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.2">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.2" />
+    </ItemGroup>
 
 </Project>
