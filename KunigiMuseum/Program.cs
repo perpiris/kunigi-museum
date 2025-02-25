@@ -1,5 +1,7 @@
 using KunigiMuseum.Data;
 using KunigiMuseum.Entities;
+using KunigiMuseum.Services;
+using KunigiMuseum.Services.Implementation;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,6 +13,9 @@ builder.Services.AddDbContext<DataContext>(opt =>
 {
     opt.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+builder.Services.AddScoped<ITeamService, TeamService>();
+builder.Services.AddScoped<IGameService, GameService>();
 
 builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
     {
