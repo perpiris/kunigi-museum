@@ -1,0 +1,36 @@
+﻿@model PaginatedViewModel<TeamDetailsViewModel>
+
+@{
+    ViewData["Title"] = "Όλες οι Ομάδες";
+    ViewData["BannerTitle"] = "Όλες οι Ομάδες";
+}
+
+<div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+    @foreach (var team in Model.Items)
+    {
+        <div class="col">
+            <a asp-controller="Team" asp-action="Details" asp-route-slug="@team.Slug" class="text-decoration-none">
+                <div class="card h-100">
+                    <img src="~/images/profile.jpg" class="card-img-top" alt="team image">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">@team.Name</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+    }
+</div>
+
+@if (Model.TotalPages > 1)
+{
+    <nav class="mt-4">
+        <ul class="pagination justify-content-center">
+            @for (var i = 1; i <= Model.TotalPages; i++)
+            {
+                <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                    <a class="page-link" asp-controller="Team" asp-action="Index" asp-route-pageNumber="@i" asp-route-pageSize="@Model.PageSize">@i</a>
+                </li>
+            }
+        </ul>
+    </nav>
+}
